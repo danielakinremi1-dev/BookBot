@@ -1,0 +1,27 @@
+from stats import get_word_count, get_character_count, sorted_character_count
+
+#This function reads the text from a book file and removes invsible BOM characters for further analysis
+def get_book_text(filepath):
+    with open(filepath, encoding="utf-8-sig") as f:
+        file_contents = f.read()
+    return file_contents
+
+def main():
+    file = "books/frankenstein.txt"
+    file_text = get_book_text(file)
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {file}")
+
+
+    print("----------- Word Count ----------")
+    word_count = get_word_count(file_text)
+    print(f"Found {word_count} total words")
+
+    print("----------- Character Count ----------")
+    sorted_character_counts = sorted_character_count(get_character_count(file_text))
+    for dict in sorted_character_counts:
+        if (dict["char"]).isalpha():
+            print(dict["char"] + ": " + str(dict["num"]))
+    print("============= END ===============")
+
+main()
