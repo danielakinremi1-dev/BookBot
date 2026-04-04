@@ -1,0 +1,23 @@
+def get_word_count(text):
+    return len(text.split())
+
+
+
+def get_character_count(text):
+    letter_counts = {}
+    for char in text.lower():
+        if char in letter_counts:
+            letter_counts[char] += 1
+        else:
+            letter_counts[char] = 1
+    return letter_counts
+
+
+
+def sorted_character_count(letter_counts):
+    sorted_dictionary = []
+    for key, value in letter_counts.items():
+        new_dict = {"char": key, "num": value}
+        sorted_dictionary.append(new_dict)
+    sorted_dictionary.sort(key=lambda x: x["num"], reverse=True)
+    return sorted_dictionary
